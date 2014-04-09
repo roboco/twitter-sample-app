@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.4'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '1.3.8'
+gem 'mysql2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
@@ -34,6 +34,11 @@ end
 
 group :development,  :test do 
 	gem 'rspec-rails'
+	gem 'guard-rspec'
+	gem 'growl_notify'
+	gem 'spork-rails'
+	gem 'guard-spork'
+	gem 'childprocess'
 end
 
 group :test do 
