@@ -5,7 +5,14 @@ describe "StaticPages" do
 
    let(:base_title) { "Ruby on Rails Tutorial Sample App" } 
    subject { page }
+   
+   shared_examples_for "all static pages" do
+    it { should have_selector('h1', text: heading)}
+    it { should have_title(full_title(page_title))}
+   end
 
+
+  #short hand tests
   describe "Home page" do
   	before {visit root_path}
   	
@@ -15,11 +22,14 @@ describe "StaticPages" do
     
     end
   
+  #using shared example
   describe "Help page" do
-    before {visit help_path}
-    it { should have_content('help')}
-    it { should have_title(full_title('Help'))} 	
-  end
+      before {visit help_path}
+      let(:heading) { 'Help' }
+      let(:page_title) { 'Help' }
+
+      it_should_behave_like "all static pages"
+    end
 
  
  describe "About page" do
@@ -42,15 +52,24 @@ describe "Contact page" do
   end
  
   describe "Contact page" do
-  	it "should have the content 'contact'" do 
-  		visit '/contact'
-  		expect(page).to have_title('Contact')
-    end
-    it "should have the title 'contact'" do 
-    	visit contact_path
-    	expect(page).to have_title("#{base_title} | Contact")
-    end
+  	before { visit contact_path }
+  	it { should have_selector('h1', text: 'Contact')}
+  	it { should have_title(full_title('Contact'))}
+  
   	
+  end
+
+  it "should have the right links on the layout" do
+    visit root_path
+    click_link "About"
+    expect(page).to have_title(full_title('About'))
+        click_link "Help"
+    expect(page).to have_title(full_title('Help'))
+        click_link "Contact"
+    expect(page).to have_title(full_title('Contact'))
+        click_link "Home"
+         click_link "Sign up now!"
+    expect(page).to have_title(full_title(''))
   end
 
 end
