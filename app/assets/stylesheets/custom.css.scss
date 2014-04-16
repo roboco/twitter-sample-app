@@ -3,10 +3,11 @@
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
-$grayLight: #999;
-$grayDarker: #ddd;
-$grayLighter: #999;
-$blue: 'blue';
+$grayLight: #D8D8D8;
+$grayDarker: #9B9B9B;
+$grayLighter: #D3D3D3;
+$blue:  #4A90E2;
+$red:  #D0021B;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -14,10 +15,6 @@ $blue: 'blue';
   box-sizing: border-box;
 }
 
-ul > li {
-  float: left;
-  margin-right: 10px;
-}
 /* universal */
 
 html {
@@ -41,6 +38,10 @@ textarea {
   h1 {
     margin-bottom: 10px;
   }
+}
+
+nav ul > li {
+  float: left;
 }
 
 /* typography */
@@ -206,9 +207,15 @@ input {
 }
 
 .field_with_errors {
+
   @extend .control-group;
   @extend .error;
+  input {
+    border:1px solid $red;
+  }
 }
+
+
 
 /* Users index */
 
