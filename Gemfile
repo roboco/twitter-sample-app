@@ -46,7 +46,7 @@ group :test do
 	gem 'selenium-webdriver'
 	gem 'capybara'
 	gem 'factory_girl_rails'
-	gem 'cucumber-rails'
+	gem 'cucumber-rails', :require => false
 	gem 'database_cleaner'
 
 end
@@ -54,7 +54,7 @@ end
 
 # Use ActiveModel has_secure_password
  gem 'bcrypt', '~> 3.1.7'
-
+ gem 'faker', '1.1.2'
 # Use unicorn as the app server
 # gem 'unicorn'
 
